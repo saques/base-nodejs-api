@@ -1,0 +1,7 @@
+extends: '@istanbuljs/nyc-config-typescript'
+all: true
+include: ['src/**']
+exclude: ['src/start.ts', 'src/serverless.ts']
+reporter: ['text-summary', 'lcov']
+check-coverage: true
+lines: 70
