@@ -1,8 +1,9 @@
 import { Request, Response } from 'express'
 import { Controller, Get, Middleware, Post } from '@overnightjs/core'
-import { ResponseSuccess } from '../models/responses/ResponseSuccess'
+import { SuccessResponse } from '../models/responses/SuccessResponse'
 import { PingHelper } from '../helpers/PingHelper'
 import { bodyValidator } from './middlewares/PingMiddlewares'
+import { SampleRequest } from '../models/requests/SampleRequest'
 
 const helper = new PingHelper()
 
@@ -12,16 +13,16 @@ export class PingController {
   async ping(req: Request, res: Response) {
     const id = req.params.id
 
-    res.status(200).send(new ResponseSuccess({ message: `Hello, ${id}` }))
+    res.status(200).send(new SuccessResponse({ message: `Hello, ${id}` }))
   }
 
   @Post()
   @Middleware(bodyValidator)
-  async pingWithBody(req: Request, res: Response) {
+  async pingWithBody(req: SampleRequest, res: Response) {
     const { id } = req.body
 
     const ans = await helper.getGreeting(id)
 
-    res.status(200).send(new ResponseSuccess({ message: ans }))
+    res.status(200).send(new SuccessResponse({ message: ans }))
   }
 }

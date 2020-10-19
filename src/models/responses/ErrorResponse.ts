@@ -13,7 +13,7 @@ type ErrorType = {
   code: ErrorCodeType
 }
 
-export class ResponseError {
+export class ErrorResponse {
   status: StatusType = 'error'
   error: ErrorType
 

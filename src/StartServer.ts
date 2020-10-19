@@ -5,7 +5,7 @@ import logger, { expressMiddleware as loggingMiddleware } from './utils/middlewa
 import { Server } from '@overnightjs/core'
 import { Application } from 'serverless-http'
 import { jsonParser } from './utils/middlewares/jsonParser'
-import { ResponseError, ErrorCodeType } from './models/responses/ResponseError'
+import { ErrorResponse, ErrorCodeType } from './models/responses/ErrorResponse'
 import { errorHandler } from './utils/middlewares/errorHandler'
 import { requestLogger } from './utils/middlewares/requestLogger'
 
@@ -16,7 +16,7 @@ function default404(req: Request, res: Response) {
   res
     .status(404)
     .send(
-      new ResponseError(
+      new ErrorResponse(
         `Method ${req.method} at ${req.path} is not supported`,
         ErrorCodeType.InvalidPath
       )

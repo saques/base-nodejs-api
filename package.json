@@ -7,7 +7,8 @@
     "inspect-tests": "tsc && mocha --inspect-brk",
     "coverage": "tsc && nyc mocha",
     "start-dev": "nodemon --config \"./nodemon.json\"/",
-    "start-serverless": "serverless offline start"
+    "start-serverless": "serverless offline start",
+    "document": "aglio -i docs/documentation.apib -o docs/index.html --theme-variables slate && sed -i \"s/API_DOCS_UPDATE_DATE/$(date +'%A %B %d, %Y')/g\" docs/index.html"
   },
   "keywords": [],
   "author": "",

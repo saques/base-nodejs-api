@@ -1,4 +1,4 @@
-import { ResponseError, ErrorCodeType } from '../../models/responses/ResponseError'
+import { ErrorResponse, ErrorCodeType } from '../../models/responses/ErrorResponse'
 import logger from './logger'
 
 export async function errorHandler(err, req, res, next) {
@@ -8,5 +8,5 @@ export async function errorHandler(err, req, res, next) {
 
   logger.error(msg)
 
-  res.json(new ResponseError(msg, ErrorCodeType.InternalError))
+  res.json(new ErrorResponse(msg, ErrorCodeType.InternalError))
 }

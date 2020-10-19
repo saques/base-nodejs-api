@@ -1,5 +1,5 @@
 import * as bodyParser from 'body-parser'
-import { ResponseError, ErrorCodeType } from '../../models/responses/ResponseError'
+import { ErrorResponse, ErrorCodeType } from '../../models/responses/ErrorResponse'
 import logger from './logger'
 
 export function jsonParser() {
@@ -7,7 +7,7 @@ export function jsonParser() {
     bodyParser.json()(req, res, (err) => {
       if (err) {
         logger.error(err)
-        return res.status(400).json(new ResponseError(err.toString(), ErrorCodeType.InvalidBody))
+        return res.status(400).json(new ErrorResponse(err.toString(), ErrorCodeType.InvalidBody))
       }
 
       next()

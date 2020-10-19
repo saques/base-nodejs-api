@@ -1,6 +1,6 @@
 import { StatusType } from './StatusType'
 
-export class ResponseSuccess {
+export class SuccessResponse {
   status: StatusType
 
   constructor(body?: object) {
