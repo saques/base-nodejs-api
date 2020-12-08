@@ -8,6 +8,7 @@ import { jsonParser } from './utils/middlewares/jsonParser'
 import { ErrorResponse, ErrorCodeType } from './models/responses/ErrorResponse'
 import { errorHandler } from './utils/middlewares/errorHandler'
 import { requestLogger } from './utils/middlewares/requestLogger'
+import { signatureHeader } from './utils/middlewares/signatureHeader'
 
 // This wraps all functions to handle errors on async endpoints
 require('express-async-errors')
@@ -31,6 +32,7 @@ class StartServer extends Server {
     this.app.use(jsonParser())
     this.app.use(bodyParser.urlencoded({ extended: true }))
     this.app.use(loggingMiddleware())
+    this.app.use(signatureHeader)
     this.setupControllers()
     this.app.use(default404)
     this.app.use(errorHandler)
