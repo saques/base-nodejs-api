@@ -8,7 +8,8 @@
     "coverage": "tsc && nyc mocha",
     "start-dev": "nodemon --config \"./nodemon.json\"/",
     "start-serverless": "serverless offline start",
-    "document": "aglio -i docs/documentation.apib -o docs/index.html --theme-variables slate && sed -i \"s/API_DOCS_UPDATE_DATE/$(date +'%A %B %d, %Y')/g\" docs/index.html"
+    "document": "aglio -i docs/documentation.apib -o docs/index.html --theme-variables slate && sed -i \"s/API_DOCS_UPDATE_DATE/$(date +'%A %B %d, %Y')/g\" docs/index.html",
+    "render-docs": "aglio -i docs/documentation -s --theme-variables slate"
   },
   "keywords": [],
   "author": "",
